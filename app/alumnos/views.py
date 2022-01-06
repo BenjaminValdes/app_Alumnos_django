@@ -1,12 +1,12 @@
 from django.http import HttpResponse, JsonResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 import datetime
 from django.shortcuts import render
 
 from .models import Alumno
 from .forms import AlumnoForm
 
-
+@login_required
 def get_alumnos(request):
     alumnos = Alumno.objects.all()
     form = AlumnoForm()
@@ -23,7 +23,7 @@ def get_alumnos(request):
                            'form': form})
 
 
-@login_required
+@permission_required('', login_url='accounts/login/')
 def alumno(request, id_alumno):
     alumno = Alumno.objects.get(pk=id_alumno)
     form = AlumnoForm(instance=alumno)

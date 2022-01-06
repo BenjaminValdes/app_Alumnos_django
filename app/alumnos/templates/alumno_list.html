@@ -6,7 +6,7 @@
         {% for item in alumnos %}
            <p><a href='/alumnos/{{ item.id }}'>{{ item.last_name }}, {{ item.first_name }}</a></p>
         {% endfor %}
-        <form method="POST" ACTION="/ {{ item.id }}">
+        <form method="POST" ACTION="{{ item.id }}">
         {% csrf_token %}
         {{ form }}
         <button type="submit">Enviar</button>
