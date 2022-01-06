@@ -6,6 +6,6 @@ from .models import Alumno
 class AlumnoForm(ModelForm):
     class Meta:
         model = Alumno
-        fields = ['first_name', 'last_name', 'curso', 'birthday']
+        fields = ['first_name', 'last_name', 'curso', 'status', 'birthday']
 
 
